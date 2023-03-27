@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,8 +23,8 @@
 
     <link href="<%=request.getContextPath()%>/admincss/app.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
 <body>
 <div class="wrapper">
     <nav id="sidebar" class="sidebar js-sidebar">
@@ -41,21 +43,30 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="<%=request.getContextPath()%>/views/indexadmin.jsp">
+                    <a class="sidebar-link" href="<%=request.getContextPath()%>/CatalogServlet?action=GetAll">
                         <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Category</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="<%=request.getContextPath()%>/views/productadmin.jsp">
+                    <a class="sidebar-link" href="<%=request.getContextPath()%>/ProductServlet?action=GetAll">
                         <i class="align-middle" data-feather="square"></i> <span class="align-middle">Product</span>
                     </a>
                 </li>
                 <li class="sidebar-item active">
-                    <a class="sidebar-link" href="#">
+                    <a class="sidebar-link" href="<%=request.getContextPath()%>/UserServlet?action=GetAll">
                         <i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span>
                     </a>
                 </li>
-
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="<%=request.getContextPath()%>/ProducerServlet?action=GetAll">
+                        <i class="align-middle" data-feather="user"></i> <span class="align-middle">Producer</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="<%=request.getContextPath()%>/views/imageLink.jsp">
+                        <i class="align-middle" data-feather="image"></i> <span class="align-middle">Image</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -220,8 +231,8 @@
                         </a>
 
                         <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                            <img src="<%=request.getContextPath()%>/adminimg/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall"/>
-                            <span class="text-dark">Chris Hung</span>
+                            <img src="<%=request.getContextPath()%>/adminimg/abc.img.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall"/>
+                            <span class="text-dark">Tuyendz</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="#"><i class="align-middle me-1"
@@ -246,11 +257,10 @@
             <div class="container-fluid p-0">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Demo User Table</h3>
                         <nav class="navbar navbar-expand-lg bg-light">
                             <div class="container-fluid">
                                 <a class="navbar-brand" href="#">
-                                    <button type="button" class="btn btn-success">+ Create new Account</button>
+                                    <button type="button" class="btn btn-success">+ Create new User</button>
                                 </a>
                                 <form class="d-flex" role="search">
                                     <input class="form-control me-2 fst-italic" type="search"
@@ -266,199 +276,47 @@
                         <table id="example1" class="table table-bordered table-striped text-center">
                             <thead>
                             <tr>
-                                <th>ID</th>
+<%--                                <th>User Image</th>--%>
+                                <th>User ID</th>
                                 <th>Username</th>
-                                <th>Image</th>
-                                <th>FullName</th>
-                                <th>Date of birth</th>
-                                <th>About</th>
+                                <th>Full Name</th>
+                                <th>Birthdate</th>
+                                <th>Address</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Permission</th>
                                 <th>Status</th>
-                                <th>Created Date</th>
                                 <th colspan="2">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>user1</td>
-                                <td><img width="40%" src="<%=request.getContextPath()%>/adminimg/avatars/avatar-3.jpg" alt="avt"></td>
-                                <td>Chris Hung</td>
-                                <td>22/02/2022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                </td>
-                                <td>Online</td>
-                                <td>28/10/2022</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">Unlock</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Lock</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>user2</td>
-                                <td><img width="40%" src="<%=request.getContextPath()%>/adminimg/avatars/avatar-3.jpg" alt="avt"></td>
-                                <td>Chris Hung</td>
-                                <td>22/02/2022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                </td>
-                                <td>Online</td>
-                                <td>28/10/2022</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">Unlock</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Lock</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>user3</td>
-                                <td><img width="40%" src="<%=request.getContextPath()%>/adminimg/avatars/avatar-3.jpg" alt="avt"></td>
-                                <td>Chris Hung</td>
-                                <td>22/02/2022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                </td>
-                                <td>Online</td>
-                                <td>28/10/2022</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">Unlock</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Lock</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>user4</td>
-                                <td><img width="40%" src="<%=request.getContextPath()%>/adminimg/avatars/avatar-3.jpg" alt="avt"></td>
-                                <td>Chris Hung</td>
-                                <td>22/02/2022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                </td>
-                                <td>Online</td>
-                                <td>28/10/2022</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">Unlock</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Lock</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>user5</td>
-                                <td><img width="40%" src="<%=request.getContextPath()%>/adminimg/avatars/avatar-3.jpg" alt="avt"></td>
-                                <td>Chris Hung</td>
-                                <td>22/02/2022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                </td>
-                                <td>Online</td>
-                                <td>28/10/2022</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">Unlock</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Lock</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>user6</td>
-                                <td><img width="40%" src="<%=request.getContextPath()%>/adminimg/avatars/avatar-3.jpg" alt="avt"></td>
-                                <td>Chris Hung</td>
-                                <td>22/02/2022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                </td>
-                                <td>Online</td>
-                                <td>28/10/2022</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">Unlock</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Lock</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>user7</td>
-                                <td><img width="40%" src="<%=request.getContextPath()%>/adminimg/avatars/avatar-3.jpg" alt="avt"></td>
-                                <td>Chris Hung</td>
-                                <td>22/02/2022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                </td>
-                                <td>Online</td>
-                                <td>28/10/2022</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">Unlock</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Lock</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>user8</td>
-                                <td><img width="40%" src="<%=request.getContextPath()%>/adminimg/avatars/avatar-3.jpg" alt="avt"></td>
-                                <td>Chris Hung</td>
-                                <td>22/02/2022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                </td>
-                                <td>Online</td>
-                                <td>28/10/2022</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">Unlock</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Lock</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>user9</td>
-                                <td><img width="40%" src="<%=request.getContextPath()%>/adminimg/avatars/avatar-3.jpg" alt="avt"></td>
-                                <td>Chris Hung</td>
-                                <td>22/02/2022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                </td>
-                                <td>Online</td>
-                                <td>28/10/2022</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">Unlock</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Lock</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>user10</td>
-                                <td><img width="40%" src="<%=request.getContextPath()%>/adminimg/avatars/avatar-3.jpg" alt="avt"></td>
-                                <td>Chris Hung</td>
-                                <td>22/02/2022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                </td>
-                                <td>Online</td>
-                                <td>28/10/2022</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">Unlock</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Lock</button>
-                                </td>
-                            </tr>
-
+                            <c:forEach items="${listUser}" var="user">
+                                <tr>
+<%--                                    <td><img src="<%=request.getContextPath()%>/img/${user.image}" width="30px"></td>--%>
+                                    <td>${user.userId}</td>
+                                    <td>${user.userName}</td>
+                                    <td>${user.fullName}</td>
+                                    <td>${user.birthdate}</td>
+                                    <td>${user.address}</td>
+                                    <td>${user.email}</td>
+                                    <td>${user.phone}</td>
+                                    <td>${user.permission?"Admin":"User"}</td>
+                                    <td>${user.userStatus?"Active":"Inactive"}</td>
+                                    <td>
+                                        <button style="background-color:red; width: 60px" type="button" id="delete"
+                                                class="btn btn-primary"
+                                                data-bs-toggle="modal" data-bs-target="#LockUserModal">
+                                            Lock
+                                        </button>
+                                        <button style="background-color:#0a2da2; width: 80px" type="button" id="unLock"
+                                                class="btn btn-primary"
+                                                data-bs-toggle="modal" data-bs-target="#unLockUserModal">
+                                           UnLock
+                                        </button>
+                                        <input type="hidden" id="userId" value="${user.userId}"/>
+                                    </td>
+                                </tr>
+                            </c:forEach>
                             </tbody>
 
                         </table>
@@ -476,7 +334,6 @@
                             </li>
                         </ul>
                     </nav>
-                    <!-- /.card-body -->
                 </div>
 
             </div>
@@ -739,7 +596,70 @@
         });
     });
 </script>
-
+<%--modal delete user--%>
+<div class="modal fade" id="LockUserModal" tabindex="-1"
+     aria-labelledby="deleteUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteUserModalLabel">Delete User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <form action="<%=request.getContextPath()%>/UserServlet" method="post">
+                <div class="modal-body">
+                    <p>Bạn có muốn khóa tài khoản này không</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <%--                    <input type="text" name="cdelete"  id="">--%>
+                    <input type="hidden" name="userDeleteId" value=""  id="userDeleteId"/>
+                    <input type="submit" value="Delete" name="action" class="btn btn-primary"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<%--modal unlock user--%>
+<div class="modal fade" id="unLockUserModal" tabindex="-1"
+     aria-labelledby="deleteUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="unlockUserModalLabel">unLockUser</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <form action="<%=request.getContextPath()%>/UserServlet" method="post">
+                <div class="modal-body">
+                    <p>Bạn có muốn mở lại tài khoản này không</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <%--                    <input type="text" name="cdelete"  id="">--%>
+                    <input type="hidden" name="unlockUserId" value=""  id="unlockUserId"/>
+                    <input type="submit" value="Unlock" name="action" class="btn btn-primary"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+    $(document).on('click', 'table #delete', function () {
+        let userId = $(this).parent().find('#userId').val();
+        $('#userDeleteId').val(userId);
+    });
+    $(document).on('click', 'table #unLock', function () {
+        let userId = $(this).parent().find('#userId').val();
+        $('#unlockUserId').val(userId);
+    });
+</script>
 </body>
 
 </html>

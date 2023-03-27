@@ -23,14 +23,14 @@
 
     <link href="<%=request.getContextPath()%>/admincss/app.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
 <div class="wrapper">
     <nav id="sidebar" class="sidebar js-sidebar">
         <div class="sidebar-content js-simplebar">
-            <a class="sidebar-brand" href="indexadmin.jsp">
+            <a class="sidebar-brand" href="<%=request.getContextPath()%>/views/indexadmin.jsp">
                 <span class="align-middle">AdminKit</span>
             </a>
 
@@ -43,8 +43,8 @@
                         <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Dashboard</span>
                     </a>
                 </li>
-                <li class="sidebar-item active">
-                    <a class="sidebar-link" href="<%=request.getContextPath()%>/CatalogServlet?action=GetAll">
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="<%=request.getContextPath()%>/views/indexadmin.jsp">
                         <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Category</span>
                     </a>
                 </li>
@@ -53,12 +53,12 @@
                         <i class="align-middle" data-feather="square"></i> <span class="align-middle">Product</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
+                <li class="sidebar-item ">
                     <a class="sidebar-link" href="<%=request.getContextPath()%>/UserServlet?action=GetAll">
                         <i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
+                <li class="sidebar-item active">
                     <a class="sidebar-link" href="<%=request.getContextPath()%>/ProducerServlet?action=GetAll">
                         <i class="align-middle" data-feather="user"></i> <span class="align-middle">Producer</span>
                     </a>
@@ -266,20 +266,17 @@
                     <div class="card-header">
                         <nav class="navbar navbar-expand-lg bg-light">
                             <div class="container-fluid">
-                                <%--                                <a class="navbar-brand" href="#exampleModal">--%>
-                                <%--                                    <button type="button" class="btn btn-success">+ Add new Catalog</button>--%>
-                                <%--                                </a>--%>
-                                <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">
-                                    Add New Catalog
+                                        data-bs-target="#newProducerModal">
+                                    Create new Producer
                                 </button>
-                                    <form class="d-flex" role="search" action="<%=request.getContextPath()%>/CatalogServlet">
-                                        <input class="form-control me-2 fst-italic" type="text"
-                                               placeholder="Enter category's name... "
-                                               aria-label="Search" name="searchName">
-                                        <input class="btn btn-outline-success" type="submit" value="Search" name="action"/>
-                                    </form>
+                                <form class="d-flex" role="search"
+                                      action="<%=request.getContextPath()%>/ProducerServlet">
+                                    <input class="form-control me-2 fst-italic" type="text"
+                                           placeholder="Enter category's name... "
+                                           aria-label="Search" name="searchName">
+                                    <input class="btn btn-outline-success" type="submit" value="Search" name="action"/>
+                                </form>
                             </div>
                         </nav>
                     </div>
@@ -288,43 +285,39 @@
                         <table id="example1" class="table table-bordered table-striped text-center">
                             <thead>
                             <tr>
-                                <th>Catalog ID</th>
-                                <th>Catalog Name</th>
-                                <th>Descripttion</th>
-                                <th>Parent Name</th>
+                                <th>Image</th>
+                                <th>Producer Id</th>
+                                <th>Producer Name</th>
                                 <th>Status</th>
                                 <th colspan="2">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${listCat}" var="cat">
+
+                            <c:forEach items="${listProducer}" var="producer">
                                 <tr>
-                                    <td>${cat.catalogId}</td>
-                                    <td>${cat.catalogName}</td>
-                                    <td>${cat.depcriptions}</td>
-                                    <td>${cat.parentName}</td>
-                                    <td>${cat.catalogStatus?"Hoạt động":"Không hoạt động"}</td>
+                                    <td><img src="<%=request.getContextPath()%>/img/${producer.image}" width="30px"
+                                             alt="#"></td>
+                                    <td>${producer.producerId}</td>
+                                    <td>${producer.producerName}</td>
+                                    <td>${producer.producerStatus?"Hoạt động":"Không hoạt động"}</td>
                                     <td>
                                         <button style="width: 80px" type="button" id="update" class="btn btn-primary"
-                                                data-bs-toggle="modal" data-bs-target="#updateCatalogModal">
+                                                data-bs-toggle="modal" data-bs-target="#updateProducerModal">
                                             Update
                                         </button>
-                                        <button style="background-color:red; width: 75px"  type="button" id="delete" class="btn btn-primary"
-                                                data-bs-toggle="modal" data-bs-target="#deleteCatalogModal">
+                                        <button style="background-color:red; width: 75px" type="button" id="delete"
+                                                class="btn btn-primary"
+                                                data-bs-toggle="modal" data-bs-target="#deleteProducerModal">
                                             Delete
                                         </button>
-                                        <input type="hidden" id="catId" value="${cat.catalogId}"/>
+                                        <input type="hidden" id="proId" value="${producer.producerId}"/>
                                     </td>
                                 </tr>
                             </c:forEach>
+
                             </tbody>
                         </table>
-                        <!-- Button trigger modal -->
-<%--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"--%>
-<%--                                data-bs-target="#deleteCatalogModal">--%>
-<%--                            Launch demo modal--%>
-<%--                        </button>--%>
-
                     </div>
                     <nav aria-label="Page navigation example ">
                         <ul class="pagination float-end mx-4">
@@ -341,8 +334,11 @@
                     </nav>
                     <!-- /.card-body -->
                 </div>
+
             </div>
+
         </main>
+
 
         <footer class="footer">
             <div class="container-fluid">
@@ -373,128 +369,6 @@
                 </div>
             </div>
         </footer>
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create New Catalog</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="<%=request.getContextPath()%>/CatalogServlet" method="post">
-                <div class="modal-body">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="catalogName">Catalog Name</span>
-                        <input type="text" name="catalogName" class="form-control" placeholder="Input Catalog Name"
-                               aria-label="CatalogName" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="depcriptions">Depcriptions</span>
-                        <input type="text" name="depcriptions" class="form-control" placeholder="Input Depcriptions"
-                               aria-label="CatalogName" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <label class="input-group-text" for="parentName">ParentName</label>
-                        <select class="form-select" id="parentName" name="parentId">
-                            <option value="0" selected>Choose...</option>
-                            <c:forEach items="${ListCatCombo}" var="catCombo">
-                                <option value="${catCombo.catalogId}">${catCombo.catalogName}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
-                    <div class="input-group mb-3">
-                        <label class="input-group-text" for="catalogStatus">CatalogStatus</label>
-                        <select class="form-select" id="catalogStatus" name="status">
-                            <option value="true" selected>Active</option>
-                            <option value="false">Inactive</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <input type="submit" name="action" value="Create" class="btn btn-primary"/>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<%--                        <!-- Modal Delete-->--%>
-<div class="modal fade" id="deleteCatalogModal" tabindex="-1"
-     aria-labelledby="deleteCatalogModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteCatalogModalLabel">Delete Catalog</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-            </div>
-            <form action="<%=request.getContextPath()%>/CatalogServlet" method="post">
-                <div class="modal-body">
-                    <p>Bạn có muốn xóa danh mục này không</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        Close
-                    </button>
-<%--                    <input type="text" name="cdelete"  id="">--%>
-                    <input type="hidden" name="catalogDeleteId" value=""  id="catDeleteId"/>
-                    <input type="submit" value="Delete" name="action" class="btn btn-primary"/>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-//modal update
-<div class="modal fade" id="updateCatalogModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">Update Catalog</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="<%=request.getContextPath()%>/CatalogServlet" method="post">
-                <div class="modal-body">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="catalogIdUpdate">Catalog Id</span>
-                        <input type="text" name="catalogId" id="catalogId" class="form-control" readonly
-                               aria-label="CatalogId" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="catalogNameUpdate">Catalog Name</span>
-                        <input type="text" name="catNameUpdate" id="catNameUpdate" class="form-control"
-                               aria-label="CatalogName" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="catalogUpdate">Depcriptions</span>
-                        <input type="text" name="depcriptionsUpdate" id="depcriptionsUpdate" class="form-control"
-                               aria-label="CatalogName" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <label class="input-group-text" for="parentName">ParentName</label>
-                        <select class="form-select"id="parentNameUpdate" name="parentId">
-                            <option value="0" selected>Choose...</option>
-                            <c:forEach items="${ListCatCombo}" var="catCombo">
-                                <option value="${catCombo.catalogId}">${catCombo.catalogName}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
-                    <div class="input-group mb-3">
-                        <label class="input-group-text" for="catalogStatus">CatalogStatus</label>
-                        <select class="form-select" id="catalogStatusUpdate" name="status">
-                            <option value="true" selected>Active</option>
-                            <option value="false">Inactive</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <input type="submit" name="action" value="Update" class="btn btn-primary"/>
-                </div>
-            </form>
-        </div>
     </div>
 </div>
 
@@ -723,28 +597,144 @@
 </script>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Modal create new-->
+<div class="modal fade" id="newProducerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create New Producer </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="<%=request.getContextPath()%>/ProducerServlet" method="post">
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="producerName">Producer Name</span>
+                        <input type="text" class="form-control" name="producerName" placeholder="Input producer Name"
+                               aria-label="producerName" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="image">Producer Name</span>
+                        <input type="file" class="form-control" name="image" placeholder="Input Image"
+                               aria-label="producerName" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="producerStatus">Producer Status</label>
+                        <select class="form-select" id="producerStatus" name="producerStatus">
+                            <option value="true" selected>Active</option>
+                            <option value="false">Inactive</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" name="action" value="Create" class="btn btn-primary"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Button trigger modal -->
+<%--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">--%>
+<%--    Launch demo modal--%>
+<%--</button>--%>
+
+<!-- Modal delete -->
+<div class="modal fade" id="deleteProducerModal" tabindex="-1" aria-labelledby="deleteProducerModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteProducerModalLabel">Delete Producer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="<%=request.getContextPath()%>/ProducerServlet" method="post">
+                <div class="modal-body">
+                    <p>Bạn có muốn xóa nhà sản xuất này không?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" value="Delete" name="action" class="btn btn-primary"/>
+                    <input type="hidden" name="proDeleteId" id="proDeleteId"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+</button>
+
+<!-- Modal Update producer-->
+<div class="modal fade" id="updateProducerModal" tabindex="-1" aria-labelledby="updateProducerLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateProducerLabel">Update Producer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="<%=request.getContextPath()%>/ProducerServlet" method="post">
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="producerIdUpdate">Producer Id</span>
+                        <input type="text" class="form-control" name="producerId" id="producerId"
+                               placeholder="Input producer ID"
+                               aria-label="producerName" aria-describedby="basic-addon1" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="producerNameUpdate">Producer Name</span>
+                        <input type="text" class="form-control" name="producerName" id="producerNameU"
+                               placeholder="Input producer Name"
+                               aria-label="producerName" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Producer Image</span>
+                        <input type="text" class="form-control" name="oldImage" id="oldImage"
+                               aria-label="producerName" aria-describedby="basic-addon1" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Producer Image</span>
+                        <input type="file" class="form-control" name="imageUpdate" id="imageUpdate" placeholder="Input Image"
+                               aria-label="producerName" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="producerStatus">Producer Status</label>
+                        <select class="form-select" id="producerStatusUpdate" name="producerStatus">
+                            <option value="true" selected>Active</option>
+                            <option value="false">Inactive</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" name="action" value="Update" class="btn btn-primary"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).on('click', 'table #delete', function () {
-        let catId = $(this).parent().find('#catId').val();
-        $('#catDeleteId').val(catId);
-    });
+        let proId = $(this).parent().find('#proId').val();
+        $('#proDeleteId').val(proId);
+    })
     $(document).on('click', 'table #update', function () {
-        let catId = $(this).parent().find('#catId').val();
-       $.ajax({
-           type: 'GET',
-           url: '${pageContext.request.contextPath}/CatalogServlet?action=getById&&catalogId='+catId,
-           success: function (catalogUpdate){
-              $('#catalogId').val(catalogUpdate.catalogId);
-              $('#catNameUpdate').val(catalogUpdate.productName);
-              $('#depcriptionsUpdate').val(catalogUpdate.depcriptions);
-              $('#parentNameUpdate').val(catalogUpdate.parentId);
-              let status=catalogUpdate.catalogStatus.toString()
-              $('#catalogStatusUpdate').val(status);
-           }
-       });
+        let proId = $(this).parent().find('#proId').val();
+        $.ajax({
+            type: 'GET',
+            url: '${pageContext.request.contextPath}/ProducerServlet?action=GetById&&producerId=' + proId,
+            success: function (producerUpdate) {
+                $('#producerId').val(producerUpdate.producerId)
+                $('#producerNameU').val(producerUpdate.producerName)
+                $('#oldImage').val(producerUpdate.image)
+                let status = producerUpdate.producerStatus.toString()
+                $('#producerStatusUpdate').val(status)
+            }
+        });
     });
+
 </script>
 </body>
 

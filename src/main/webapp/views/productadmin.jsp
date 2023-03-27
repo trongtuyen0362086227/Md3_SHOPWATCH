@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +23,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -41,7 +44,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="<%=request.getContextPath()%>/views/indexadmin.jsp">
+                    <a class="sidebar-link" href="<%=request.getContextPath()%>/CatalogServlet?action=GetAll">
                         <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Category</span>
                     </a>
                 </li>
@@ -51,11 +54,20 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="<%=request.getContextPath()%>/views/useradmin.jsp">
+                    <a class="sidebar-link" href="<%=request.getContextPath()%>/UserServlet?action=GetAll">
                         <i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span>
                     </a>
                 </li>
-
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="<%=request.getContextPath()%>/ProducerServlet?action=GetAll">
+                        <i class="align-middle" data-feather="user"></i> <span class="align-middle">Producer</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="<%=request.getContextPath()%>/views/imageLink.jsp">
+                        <i class="align-middle" data-feather="image"></i> <span class="align-middle">Image</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -154,7 +166,8 @@
                                 <a href="#" class="list-group-item">
                                     <div class="row g-0 align-items-center">
                                         <div class="col-2">
-                                            <img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-5.jpg" class="avatar img-fluid rounded-circle"
+                                            <img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-5.jpg"
+                                                 class="avatar img-fluid rounded-circle"
                                                  alt="Vanessa Tucker">
                                         </div>
                                         <div class="col-10 ps-2">
@@ -169,7 +182,8 @@
                                 <a href="#" class="list-group-item">
                                     <div class="row g-0 align-items-center">
                                         <div class="col-2">
-                                            <img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-2.jpg" class="avatar img-fluid rounded-circle"
+                                            <img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-2.jpg"
+                                                 class="avatar img-fluid rounded-circle"
                                                  alt="William Harris">
                                         </div>
                                         <div class="col-10 ps-2">
@@ -183,7 +197,8 @@
                                 <a href="#" class="list-group-item">
                                     <div class="row g-0 align-items-center">
                                         <div class="col-2">
-                                            <img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-4.jpg" class="avatar img-fluid rounded-circle"
+                                            <img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-4.jpg"
+                                                 class="avatar img-fluid rounded-circle"
                                                  alt="Christina Mason">
                                         </div>
                                         <div class="col-10 ps-2">
@@ -196,7 +211,8 @@
                                 <a href="#" class="list-group-item">
                                     <div class="row g-0 align-items-center">
                                         <div class="col-2">
-                                            <img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-3.jpg" class="avatar img-fluid rounded-circle"
+                                            <img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-3.jpg"
+                                                 class="avatar img-fluid rounded-circle"
                                                  alt="Sharon Lessman">
                                         </div>
                                         <div class="col-10 ps-2">
@@ -220,7 +236,8 @@
                         </a>
 
                         <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                            <img src="<%=request.getContextPath()%>/adminimg/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall"/>
+                            <img src="<%=request.getContextPath()%>/adminimg/avatars/avatar.jpg"
+                                 class="avatar img-fluid rounded me-1" alt="Charles Hall"/>
                             <span class="text-dark">Chris Hung</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
@@ -229,8 +246,9 @@
                             <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i>
                                 Analytics</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="<%=request.getContextPath()%>/views/indexadmin.jsp"><i class="align-middle me-1"
-                                                                          data-feather="settings"></i> Settings &
+                            <a class="dropdown-item" href="<%=request.getContextPath()%>/views/indexadmin.jsp"><i
+                                    class="align-middle me-1"
+                                    data-feather="settings"></i> Settings &
                                 Privacy</a>
                             <a class="dropdown-item" href="#"><i class="align-middle me-1"
                                                                  data-feather="help-circle"></i> Help Center</a>
@@ -249,14 +267,17 @@
                         <h3 class="card-title">Demo Category Table</h3>
                         <nav class="navbar navbar-expand-lg bg-light">
                             <div class="container-fluid">
-                                <a class="navbar-brand" href="#">
-                                    <button type="button" class="btn btn-success">+ Add new Product</button>
-                                </a>
-                                <form class="d-flex" role="search">
-                                    <input class="form-control me-2 fst-italic" type="search"
-                                           placeholder="Enter product's name... "
-                                           aria-label="Search">
-                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#createProductModal">
+                                    Create New Product
+                                </button>
+                                <form class="d-flex" role="search"
+                                      action="<%=request.getContextPath()%>/ProductServlet">
+                                    <input class="form-control me-2 fst-italic" type="text"
+                                           placeholder="Enter category's name... "
+                                           aria-label="Search" name="searchName">
+                                    <input class="btn btn-outline-success" type="submit" value="Search" name="action"/>
                                 </form>
                             </div>
                         </nav>
@@ -266,178 +287,48 @@
                         <table id="example1" class="table table-bordered table-striped text-center">
                             <thead>
                             <tr>
+                                <th>Image</th>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Image</th>
-                                <th>Description</th>
-                                <th>Created Date</th>
                                 <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Created</th>
                                 <th>Status</th>
                                 <th>Category</th>
+                                <th>Producer</th>
                                 <th colspan="2">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Product 1</td>
-                                <td><img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-5.jpg" width="30%" alt="#"></td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-                                <td>28/10/2022</td>
-                                <td>100 $</td>
-                                <td>Ready</td>
-                                <td>Category 1</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Product 2</td>
-                                <td><img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-5.jpg" width="30%" alt="#"></td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-                                <td>28/10/2022</td>
-                                <td>100 $</td>
-                                <td>Ready</td>
-                                <td>Category 2</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Product 3</td>
-                                <td><img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-5.jpg" width="30%" alt="#"></td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-                                <td>28/10/2022</td>
-                                <td>100 $</td>
-                                <td>Ready</td>
-                                <td>Category 3</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Product 4</td>
-                                <td><img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-5.jpg" width="30%" alt="#"></td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-                                <td>28/10/2022</td>
-                                <td>100 $</td>
-                                <td>Ready</td>
-                                <td>Category 4</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Product 5</td>
-                                <td><img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-5.jpg" width="30%" alt="#"></td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-                                <td>28/10/2022</td>
-                                <td>100 $</td>
-                                <td>Ready</td>
-                                <td>Category 5</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Product 6</td>
-                                <td><img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-5.jpg" width="30%" alt="#"></td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-                                <td>28/10/2022</td>
-                                <td>100 $</td>
-                                <td>Ready</td>
-                                <td>Category 6</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>Product 7</td>
-                                <td><img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-5.jpg" width="30%" alt="#"></td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-                                <td>28/10/2022</td>
-                                <td>100 $</td>
-                                <td>Ready</td>
-                                <td>Category 7</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>Product 8</td>
-                                <td><img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-5.jpg" width="30%" alt="#"></td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-                                <td>28/10/2022</td>
-                                <td>100 $</td>
-                                <td>Ready</td>
-                                <td>Category 8</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>Product 9</td>
-                                <td><img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-5.jpg" width="30%" alt="#"></td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-                                <td>28/10/2022</td>
-                                <td>100 $</td>
-                                <td>Ready</td>
-                                <td>Category 9</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>Product 10</td>
-                                <td><img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-5.jpg" width="30%" alt="#"></td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-                                <td>28/10/2022</td>
-                                <td>100 $</td>
-                                <td>Ready</td>
-                                <td>Category 10</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
+                            <c:forEach items="${listProduct}" var="pro">
+                                <tr>
+                                    <td><img src="<%=request.getContextPath()%>/img/${pro.image}" width="30px"></td>
+                                    <td>${pro.productId}</td>
+                                    <td>${pro.productName}</td>
+                                    <td>${pro.price}</td>
+                                    <td>${pro.quantity}</td>
+                                    <td>${pro.title}</td>
+                                    <td>${pro.depcriptions}</td>
+                                    <td>${pro.created}</td>
+                                    <td>${pro.productstatus?"Active":"Inactive"}</td>
+                                    <td>${pro.catalogId}</td>
+                                    <td>${pro.producerid}</td>
+                                    <td>
+                                        <button style="width: 60px" type="button" id="update" class="btn btn-primary"
+                                                data-bs-toggle="modal" data-bs-target="#updateProductModal">
+                                            Edit
+                                        </button>
+                                        <button style="background-color:red; width: 60px" type="button" id="delete"
+                                                class="btn btn-primary"
+                                                data-bs-toggle="modal" data-bs-target="#deleteProductModal">
+                                            Del
+                                        </button>
+                                        <input type="hidden" id="proId" value="${pro.productId}"/>
+                                    </td>
+                                </tr>
+                            </c:forEach>
                             </tbody>
 
                         </table>
@@ -715,7 +606,234 @@
         });
     });
 </script>
+<!-- Modal Create new Product-->
+<div class="modal fade" id="createProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create new Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="<%=request.getContextPath()%>/ProductServlet" method="post">
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="productName">Product Name</span>
+                        <input type="text" class="form-control" name="productName" placeholder="Input product Name"
+                               aria-label="producerName" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="price">Price</span>
+                        <input type="number" class="form-control" name="price" placeholder="Input Price"
+                               aria-label="producerName" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="quantity">Quantity</span>
+                        <input type="number" class="form-control" name="quantity" placeholder="Input Quantity"
+                               aria-label="producerName" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="title">Title</span>
+                        <input type="text" class="form-control" name="title" placeholder="Input Title"
+                               aria-label="producerName" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="depscriptions">Descriptions</span>
+                        <input type="text" class="form-control" name="depscriptions" placeholder="Input Price"
+                               aria-label="producerName" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="created">Created</span>
+                        <input type="date" class="form-control" name="created" placeholder="Input Price"
+                               aria-label="producerName" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="image">Image</span>
+                        <input type="file" class="form-control" name="image" placeholder="Input Image"
+                               aria-label="producerName" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="productStatus">Producer Status</label>
+                        <select class="form-select" id="productStatus" name="productStatus">
+                            <option value="true" selected>Active</option>
+                            <option value="false">Inactive</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="catalog">Catalog</label>
+                        <select class="form-select" id="catalog" name="catalog">
+                            <option value="0" selected>Choose...</option>
+                            <c:forEach items="${listCat}" var="cat">
+                                <option value="${cat.catalogId}">${cat.catalogName}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="producer">Producer</label>
+                        <option value="0" selected>Choose...</option>
+                        <select class="form-select" id="producer" name="producer">
+                            <c:forEach items="${listProducer}" var="pro">
+                                <option value="${pro.producerId}">${pro.producerName}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" name="action" value="Create" class="btn btn-primary"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+</button>
 
+<!-- Modal update product -->
+<div class="modal fade" id="updateProductModal" tabindex="-1" aria-labelledby="updateProductModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateProductModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="<%=request.getContextPath()%>/ProductServlet" method="post">
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">ProductId</span>
+                        <input type="text" class="form-control" id="productIdUpdate" name="productIdUpdate" placeholder="Input productId"
+                               aria-label="producerName" aria-describedby="basic-addon1" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" >Product Name</span>
+                        <input type="text" class="form-control" id="productNameUpdate" name="productNameUpdate"
+                               placeholder="Input product Name"
+                               aria-label="producerName" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" >Price</span>
+                        <input type="number" class="form-control" id="priceUpdate" name="priceUpdate" placeholder="Input Price"
+                               aria-label="producerName" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" >Quantity</span>
+                        <input type="number" class="form-control" id="quantityUpdate" name="quantityUpdate" placeholder="Input Quantity"
+                               aria-label="producerName" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" >Title</span>
+                        <input type="text" class="form-control" id="titleUpdate" name="titleUpdate" placeholder="Input Title"
+                               aria-label="producerName" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" >Descriptions</span>
+                        <input type="text" class="form-control" id="depscriptionsUpdate" name="depscriptionsUpdate" placeholder="Input Price"
+                               aria-label="producerName" aria-describedby="basic-addon1">
+                    </div>
+<%--                    <div class="input-group mb-3">--%>
+<%--                        <span class="input-group-text" >Created</span>--%>
+<%--                        <input type="date" class="form-control" id="createdUpdate" name="createdUpdate" placeholder="Input Price"--%>
+<%--                               aria-label="producerName" aria-describedby="basic-addon1">--%>
+<%--                    </div>--%>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" >OldImage</span>
+                        <input type="text" class="form-control" id="oldImage" name="oldImage"
+                               aria-label="producerName" aria-describedby="basic-addon1" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" >Image</span>
+                        <input type="file" class="form-control" id="imageUpdate" name="imageUpdate" placeholder="Input Image"
+                               aria-label="producerName" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="productStatusUpdate">Producer Status</label>
+                        <select class="form-select" id="productStatusUpdate" name="productStatusUpdate">
+                            <option value="true" selected>Active</option>
+                            <option value="false">Inactive</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="catalogUpdate">Catalog</label>
+                        <select class="form-select" id="catalogUpdate" name="catalogUpdate">
+                            <c:forEach items="${listCat}" var="cat">
+                                <option value="${cat.catalogId}">${cat.catalogName}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="producerUpdate">Producer</label>
+                        <select class="form-select" id="producerUpdate" name="producerUpdate">
+                            <c:forEach items="${listProducer}" var="pro">
+                                <option value="${pro.producerId}">${pro.producerName}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" name="action" value="Update" class="btn btn-primary"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<%--                        <!-- Modal Delete-->--%>
+<div class="modal fade" id="deleteProductModal" tabindex="-1"
+     aria-labelledby="deleteCatalogModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteCatalogModalLabel">Delete Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <form action="<%=request.getContextPath()%>/ProductServlet" method="post">
+                <div class="modal-body">
+                    <p>Bạn có muốn xóa danh mục này không</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <%--                    <input type="text" name="cdelete"  id="">--%>
+                    <input type="hidden" name="productDeleteId" value=""  id="proDeleteId"/>
+                    <input type="submit" value="Delete" name="action" class="btn btn-primary"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).on('click', 'table #delete', function () {
+        let proId = $(this).parent().find('#proId').val();
+        $('#proDeleteId').val(proId);
+    });
+    $(document).on('click', 'table #update', function () {
+        let proId = $(this).parent().find('#proId').val();
+        $.ajax({
+            type: 'GET',
+            url: '${pageContext.request.contextPath}/ProductServlet?action=getById&&productId='+proId,
+            success: function (proUpdate){
+                console.log(proUpdate)
+                $('#productIdUpdate').val(proUpdate.productId);
+                $('#productNameUpdate').val(proUpdate.productName);``
+                $('#priceUpdate').val(proUpdate.price);
+                $('#quantityUpdate').val(proUpdate.quantity);
+                $('#titleUpdate').val(proUpdate.title);
+                $('#depscriptionsUpdate').val(proUpdate.depcriptions);
+                $('#oldImage').val(proUpdate.image);
+                let status=proUpdate.productstatus.toString()
+                $('#productStatusUpdate').val(status);
+                $('#catalogUpdate').val(proUpdate.catalogId)
+                $('#producerUpdate').val(proUpdate.producerid)
+            }
+        });
+    });
+</script>
 </body>
 
 </html>

@@ -39,7 +39,55 @@
     <![endif]-->
 
   </head>
-  <body> 
+  <div class="col-md-10 mb-5 text-center">
+
+    <ul class="product-category">
+      <li>
+        <a href="<%=request.getContextPath()%>/HomeServlet?action=shop" class="active">Tất Cả</a>
+      </li>
+      <c:forEach items="${catalogListOn}" var="cat">
+        <li>
+          <a href="<%=request.getContextPath()%>/ProductServlet?action=shop&&catalogId=${cat.catalogId}" class="active">${cat.catalogName}</a>
+        </li>
+      </c:forEach>
+    </ul>
+
+  </div>
+
+  </div>
+  <div class="row" >
+    <c:forEach items="${productListOn}" var="pro">
+      <div class="col-md-6 col-lg-3 ftco-animate">
+        <div class="product">
+          <a href="<%=request.getContextPath()%>/ProductServlet?action=proDetailsDisplayUser&&productId=${pro.productId}" id="anh" class="img-prod"><img style="width: 100%; height: 290px;" class="img-fluid" src="<%=request.getContextPath()%>/images/${pro.image}"  alt="${pro.productName}">
+            <div class="overlay"></div>
+          </a>
+          <div class="text py-3 pb-4 px-3 text-center">
+            <h3><a href="<%=request.getContextPath()%>/ProductServlet?action=proDetailsDisplayUser&&productId=${pro.productId}r">${pro.productName}</a></h3>
+            <div class="d-flex">
+              <div class="pricing">
+                <p class="price"><span>${pro.price}00 VND</span></p>
+              </div>
+            </div>
+            <div class="bottom-area d-flex px-3">
+              <div class="m-auto d-flex">
+                <a href="<%=request.getContextPath()%>/ProductServlet?action=proDetailsDisplayUser&&productId=${pro.productId}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                  <span><i class="ion-ios-menu"></i></span>
+                </a>
+                <a href="<%=request.getContextPath()%>/views/cart.jsp" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                  <span><i class="ion-ios-cart"></i></span>
+                </a>
+                <a href="<%=request.getContextPath()%>/views/wishlist.jsp" class="heart d-flex justify-content-center align-items-center ">
+                  <span><i class="ion-ios-heart"></i></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </c:forEach>
+
+    <body>
     <!-- wpf loader Two -->
     <div id="wpf-loader-two">          
       <div class="wpf-loader-two-inner">

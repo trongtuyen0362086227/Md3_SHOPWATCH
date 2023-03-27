@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,14 +22,13 @@
 
     <link href="<%=request.getContextPath()%>/admincss/app.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
 <div class="wrapper">
     <nav id="sidebar" class="sidebar js-sidebar">
         <div class="sidebar-content js-simplebar">
-            <a class="sidebar-brand" href="indexadmin.jsp">
+            <a class="sidebar-brand" href="<%=request.getContextPath()%>/views/indexadmin.jsp">
                 <span class="align-middle">AdminKit</span>
             </a>
 
@@ -43,27 +41,27 @@
                         <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Dashboard</span>
                     </a>
                 </li>
-                <li class="sidebar-item active">
-                    <a class="sidebar-link" href="<%=request.getContextPath()%>/CatalogServlet?action=GetAll">
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="<%=request.getContextPath()%>/views/indexadmin.jsp">
                         <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Category</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="<%=request.getContextPath()%>/ProductServlet?action=GetAll">
+                    <a class="sidebar-link" href="<%=request.getContextPath()%>/views/productadmin.jsp">
                         <i class="align-middle" data-feather="square"></i> <span class="align-middle">Product</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="<%=request.getContextPath()%>/UserServlet?action=GetAll">
+                <li class="sidebar-item ">
+                    <a class="sidebar-link" href="#<%=request.getContextPath()%>/UserServlet?action=GetAll">
                         <i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
+                <li class="sidebar-item ">
                     <a class="sidebar-link" href="<%=request.getContextPath()%>/ProducerServlet?action=GetAll">
                         <i class="align-middle" data-feather="user"></i> <span class="align-middle">Producer</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
+                <li class="sidebar-item active">
                     <a class="sidebar-link" href="<%=request.getContextPath()%>/views/imageLink.jsp">
                         <i class="align-middle" data-feather="image"></i> <span class="align-middle">Image</span>
                     </a>
@@ -166,8 +164,7 @@
                                 <a href="#" class="list-group-item">
                                     <div class="row g-0 align-items-center">
                                         <div class="col-2">
-                                            <img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-5.jpg"
-                                                 class="avatar img-fluid rounded-circle"
+                                            <img src="<%=request.getContextPath()%>adminimg/avatars/avatar-5.jpg" class="avatar img-fluid rounded-circle"
                                                  alt="Vanessa Tucker">
                                         </div>
                                         <div class="col-10 ps-2">
@@ -182,8 +179,7 @@
                                 <a href="#" class="list-group-item">
                                     <div class="row g-0 align-items-center">
                                         <div class="col-2">
-                                            <img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-2.jpg"
-                                                 class="avatar img-fluid rounded-circle"
+                                            <img src="<%=request.getContextPath()%>adminimg/avatars/avatar-2.jpg" class="avatar img-fluid rounded-circle"
                                                  alt="William Harris">
                                         </div>
                                         <div class="col-10 ps-2">
@@ -197,8 +193,7 @@
                                 <a href="#" class="list-group-item">
                                     <div class="row g-0 align-items-center">
                                         <div class="col-2">
-                                            <img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-4.jpg"
-                                                 class="avatar img-fluid rounded-circle"
+                                            <img src="<%=request.getContextPath()%>adminimg/avatars/avatar-4.jpg" class="avatar img-fluid rounded-circle"
                                                  alt="Christina Mason">
                                         </div>
                                         <div class="col-10 ps-2">
@@ -211,8 +206,7 @@
                                 <a href="#" class="list-group-item">
                                     <div class="row g-0 align-items-center">
                                         <div class="col-2">
-                                            <img src="<%=request.getContextPath()%>/adminimg/avatars/avatar-3.jpg"
-                                                 class="avatar img-fluid rounded-circle"
+                                            <img src="<%=request.getContextPath()%>adminimg/avatars/avatar-3.jpg" class="avatar img-fluid rounded-circle"
                                                  alt="Sharon Lessman">
                                         </div>
                                         <div class="col-10 ps-2">
@@ -236,8 +230,7 @@
                         </a>
 
                         <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                            <img src="<%=request.getContextPath()%>/adminimg/avatars/avatar.jpg"
-                                 class="avatar img-fluid rounded me-1" alt="Charles Hall"/>
+                            <img src="<%=request.getContextPath()%>adminimg/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall"/>
                             <span class="text-dark">Chris Hung</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
@@ -246,9 +239,8 @@
                             <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i>
                                 Analytics</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="<%=request.getContextPath()%>/views/indexadmin.jsp"><i
-                                    class="align-middle me-1"
-                                    data-feather="settings"></i> Settings &
+                            <a class="dropdown-item" href="<%=request.getContextPath()%>/views/indexadmin.jsp"><i class="align-middle me-1"
+                                                                          data-feather="settings"></i> Settings &
                                 Privacy</a>
                             <a class="dropdown-item" href="#"><i class="align-middle me-1"
                                                                  data-feather="help-circle"></i> Help Center</a>
@@ -264,22 +256,18 @@
             <div class="container-fluid p-0">
                 <div class="card">
                     <div class="card-header">
+                        <h3 class="card-title">Demo User Table</h3>
                         <nav class="navbar navbar-expand-lg bg-light">
                             <div class="container-fluid">
-                                <%--                                <a class="navbar-brand" href="#exampleModal">--%>
-                                <%--                                    <button type="button" class="btn btn-success">+ Add new Catalog</button>--%>
-                                <%--                                </a>--%>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">
-                                    Add New Catalog
-                                </button>
-                                    <form class="d-flex" role="search" action="<%=request.getContextPath()%>/CatalogServlet">
-                                        <input class="form-control me-2 fst-italic" type="text"
-                                               placeholder="Enter category's name... "
-                                               aria-label="Search" name="searchName">
-                                        <input class="btn btn-outline-success" type="submit" value="Search" name="action"/>
-                                    </form>
+                                <a class="navbar-brand" href="#">
+                                    <button type="button" class="btn btn-success">+ Create new Account</button>
+                                </a>
+                                <form class="d-flex" role="search">
+                                    <input class="form-control me-2 fst-italic" type="search"
+                                           placeholder="Enter user's name... "
+                                           aria-label="Search">
+                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                </form>
                             </div>
                         </nav>
                     </div>
@@ -288,43 +276,26 @@
                         <table id="example1" class="table table-bordered table-striped text-center">
                             <thead>
                             <tr>
-                                <th>Catalog ID</th>
-                                <th>Catalog Name</th>
-                                <th>Descripttion</th>
-                                <th>Parent Name</th>
+                                <th>Image ID</th>
+                                <th>Image Name</th>
+                                <th>Link</th>
+                                <th>Product</th>
                                 <th>Status</th>
-                                <th colspan="2">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${listCat}" var="cat">
+                            <c:forEach items="${listImage}" var="img">
                                 <tr>
-                                    <td>${cat.catalogId}</td>
-                                    <td>${cat.catalogName}</td>
-                                    <td>${cat.depcriptions}</td>
-                                    <td>${cat.parentName}</td>
-                                    <td>${cat.catalogStatus?"Hoạt động":"Không hoạt động"}</td>
-                                    <td>
-                                        <button style="width: 80px" type="button" id="update" class="btn btn-primary"
-                                                data-bs-toggle="modal" data-bs-target="#updateCatalogModal">
-                                            Update
-                                        </button>
-                                        <button style="background-color:red; width: 75px"  type="button" id="delete" class="btn btn-primary"
-                                                data-bs-toggle="modal" data-bs-target="#deleteCatalogModal">
-                                            Delete
-                                        </button>
-                                        <input type="hidden" id="catId" value="${cat.catalogId}"/>
-                                    </td>
+                                    <td>${img.imageId}</td>
+                                    <td>${img.link}</td>
+                                    <td>${img.imageName}</td>
+                                    <td>${img.productId}</td>
+                                    <td>${img.imageStatus}</td>
                                 </tr>
                             </c:forEach>
                             </tbody>
-                        </table>
-                        <!-- Button trigger modal -->
-<%--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"--%>
-<%--                                data-bs-target="#deleteCatalogModal">--%>
-<%--                            Launch demo modal--%>
-<%--                        </button>--%>
 
+                        </table>
                     </div>
                     <nav aria-label="Page navigation example ">
                         <ul class="pagination float-end mx-4">
@@ -341,8 +312,11 @@
                     </nav>
                     <!-- /.card-body -->
                 </div>
+
             </div>
+
         </main>
+
 
         <footer class="footer">
             <div class="container-fluid">
@@ -373,128 +347,6 @@
                 </div>
             </div>
         </footer>
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create New Catalog</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="<%=request.getContextPath()%>/CatalogServlet" method="post">
-                <div class="modal-body">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="catalogName">Catalog Name</span>
-                        <input type="text" name="catalogName" class="form-control" placeholder="Input Catalog Name"
-                               aria-label="CatalogName" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="depcriptions">Depcriptions</span>
-                        <input type="text" name="depcriptions" class="form-control" placeholder="Input Depcriptions"
-                               aria-label="CatalogName" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <label class="input-group-text" for="parentName">ParentName</label>
-                        <select class="form-select" id="parentName" name="parentId">
-                            <option value="0" selected>Choose...</option>
-                            <c:forEach items="${ListCatCombo}" var="catCombo">
-                                <option value="${catCombo.catalogId}">${catCombo.catalogName}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
-                    <div class="input-group mb-3">
-                        <label class="input-group-text" for="catalogStatus">CatalogStatus</label>
-                        <select class="form-select" id="catalogStatus" name="status">
-                            <option value="true" selected>Active</option>
-                            <option value="false">Inactive</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <input type="submit" name="action" value="Create" class="btn btn-primary"/>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<%--                        <!-- Modal Delete-->--%>
-<div class="modal fade" id="deleteCatalogModal" tabindex="-1"
-     aria-labelledby="deleteCatalogModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteCatalogModalLabel">Delete Catalog</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-            </div>
-            <form action="<%=request.getContextPath()%>/CatalogServlet" method="post">
-                <div class="modal-body">
-                    <p>Bạn có muốn xóa danh mục này không</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        Close
-                    </button>
-<%--                    <input type="text" name="cdelete"  id="">--%>
-                    <input type="hidden" name="catalogDeleteId" value=""  id="catDeleteId"/>
-                    <input type="submit" value="Delete" name="action" class="btn btn-primary"/>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-//modal update
-<div class="modal fade" id="updateCatalogModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">Update Catalog</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="<%=request.getContextPath()%>/CatalogServlet" method="post">
-                <div class="modal-body">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="catalogIdUpdate">Catalog Id</span>
-                        <input type="text" name="catalogId" id="catalogId" class="form-control" readonly
-                               aria-label="CatalogId" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="catalogNameUpdate">Catalog Name</span>
-                        <input type="text" name="catNameUpdate" id="catNameUpdate" class="form-control"
-                               aria-label="CatalogName" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="catalogUpdate">Depcriptions</span>
-                        <input type="text" name="depcriptionsUpdate" id="depcriptionsUpdate" class="form-control"
-                               aria-label="CatalogName" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <label class="input-group-text" for="parentName">ParentName</label>
-                        <select class="form-select"id="parentNameUpdate" name="parentId">
-                            <option value="0" selected>Choose...</option>
-                            <c:forEach items="${ListCatCombo}" var="catCombo">
-                                <option value="${catCombo.catalogId}">${catCombo.catalogName}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
-                    <div class="input-group mb-3">
-                        <label class="input-group-text" for="catalogStatus">CatalogStatus</label>
-                        <select class="form-select" id="catalogStatusUpdate" name="status">
-                            <option value="true" selected>Active</option>
-                            <option value="false">Inactive</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <input type="submit" name="action" value="Update" class="btn btn-primary"/>
-                </div>
-            </form>
-        </div>
     </div>
 </div>
 
@@ -722,30 +574,6 @@
     });
 </script>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript">
-    $(document).on('click', 'table #delete', function () {
-        let catId = $(this).parent().find('#catId').val();
-        $('#catDeleteId').val(catId);
-    });
-    $(document).on('click', 'table #update', function () {
-        let catId = $(this).parent().find('#catId').val();
-       $.ajax({
-           type: 'GET',
-           url: '${pageContext.request.contextPath}/CatalogServlet?action=getById&&catalogId='+catId,
-           success: function (catalogUpdate){
-              $('#catalogId').val(catalogUpdate.catalogId);
-              $('#catNameUpdate').val(catalogUpdate.productName);
-              $('#depcriptionsUpdate').val(catalogUpdate.depcriptions);
-              $('#parentNameUpdate').val(catalogUpdate.parentId);
-              let status=catalogUpdate.catalogStatus.toString()
-              $('#catalogStatusUpdate').val(status);
-           }
-       });
-    });
-</script>
 </body>
 
 </html>

@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:mysql://localhost:3306/watch_CSDL</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="watch_csdl@localhost" uuid="10eec7e6-9a1f-4108-9592-8f9eb9594fa1">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/watch_csdl</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

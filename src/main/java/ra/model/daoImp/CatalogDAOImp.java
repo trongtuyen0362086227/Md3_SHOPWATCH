@@ -139,7 +139,7 @@ public class CatalogDAOImp implements CatalogDAO<CatalogInfo, Integer> {
         List<CatalogInfo> listSearchCatalog = null;
         try {
             conn = ConnectionDB.openConnection();
-            callSt = conn.prepareCall("{call proc_searchCatalogByName(?)}");
+            callSt = conn.prepareCall("{call proc_searchProducerByName(?)}");
             callSt.setString(1, name);
             ResultSet rs = callSt.executeQuery();
             listSearchCatalog = new ArrayList<>();

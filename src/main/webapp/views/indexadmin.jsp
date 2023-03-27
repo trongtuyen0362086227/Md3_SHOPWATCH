@@ -47,13 +47,23 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="<%=request.getContextPath()%>/views/productadmin.jsp">
+                        <a class="sidebar-link" href="<%=request.getContextPath()%>/ProductServlet?action=GetAll">
                             <i class="align-middle" data-feather="square"></i> <span class="align-middle">Product</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="<%=request.getContextPath()%>/views/useradmin.jsp">
+                        <a class="sidebar-link" href="<%=request.getContextPath()%>/UserServlet?action=GetAll">
                             <i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="<%=request.getContextPath()%>/ProducerServlet?action=GetAll">
+                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Producer</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="<%=request.getContextPath()%>/UserServlet?action=GetAll">
+                            <i class="align-middle" data-feather="image"></i> <span class="align-middle">Image</span>
                         </a>
                     </li>
                 </ul>
@@ -226,9 +236,9 @@
 
                             <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
                                 data-bs-toggle="dropdown">
-                                <img src="<%=request.getContextPath()%>/adminimg/avatars/avatar.jpg" class="avatar img-fluid rounded me-1"
+                                <img src="<%=request.getContextPath()%>/adminimg/abc.img.jpg" class="avatar img-fluid rounded me-1"
                                     alt="Charles Hall" />
-                                <span class="text-dark">Chris Hung</span>
+                                <span class="text-dark">Tuyendz</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="user"></i>
